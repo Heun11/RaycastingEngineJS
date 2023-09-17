@@ -1,15 +1,14 @@
 var world = [
     rcWallCreate(100,100,600,100),
-    rcWallCreate(600,100,800,800),
-    rcWallCreate(800,800,200,600),
+    rcWallCreate(600,100,800,700),
+    rcWallCreate(800,700,200,600),
     rcWallCreate(200,600,100,100),
     rcWallCreate(300,200,300,500),
     rcWallCreate(300,500,400,300),
     rcWallCreate(400,300,300,200)
 ]
 
-var mouse_sensitivity_divider = 4;
-var mouse_angle = 0;
+var minimap_scale = 0.5;
 
 function playerCreate()
 {
@@ -121,14 +120,15 @@ var player = playerCreate();
 
 function gUpdate()
 {
+    //view rendering
+    viewRender(player);
+
     // minimap rendering
     world.forEach((wall)=>{
         rcWallRender(wall);
     });
     playerRender(player, world);
     
-    //view rendering
-    viewRender(player);
 }
 
 function gKeyDown(e)
